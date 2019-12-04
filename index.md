@@ -7,3 +7,5 @@ I use the Elo alogorithm to quantitatively measure the urban perception based on
 ### Interactive Maps
 
 - [Chicago](https://luxin-tian.github.io/Scoring_Neighborhoods/pp2_chicago_safety.html)
+
+### The full project is comming soon. 
