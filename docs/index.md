@@ -5,7 +5,7 @@ I quantitatively measure the urban perception based on digital surveys to humans
 
 ### Interactive Maps
 
-- [Chicago](https://luxin-tian.github.io/Scoring_Neighborhoods/pp2_chicago_safety.html)
+- [Chicago](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/pp2_chicago_safety.html)
 
 ### Algorithm and Methods
 [Elo Rating System](https://en.wikipedia.org/wiki/Elo_rating_system)
