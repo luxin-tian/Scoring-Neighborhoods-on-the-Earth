@@ -1,11 +1,21 @@
-## Scoring Places on the EARTH
+# Scoring Places on the EARTH (Beta)
 
-I use the Elo alogorithm to quantitatively measure the urban perception based on digital surveys to humans on the planet! I present the result based on [Place Pulse 2.0](http://pulse.media.mit.edu/vision/). 
+I quantitatively measure the urban perception based on digital surveys to humans on the planet! I present the result based on [Place Pulse 2.0](http://pulse.media.mit.edu/vision/). 
 
-### [Luxin Tian](https://github.com/luxin-tian) at the University of Chicago
 
 ### Interactive Maps
 
 - [Chicago](https://luxin-tian.github.io/Scoring_Neighborhoods/pp2_chicago_safety.html)
 
-### The full project is comming soon. 
+### Algorithm and Methods
+[Elo Rating System](https://en.wikipedia.org/wiki/Elo_rating_system)
+
+
+### The full project is coming soon. 
+
+
+### About me
+[Luxin Tian](https://github.com/luxin-tian) at the University of Chicago
+
+### Computational Social Science
+Learn more about the impact of [computational social sciences](https://macss.uchicago.edu) in the digital age. 
