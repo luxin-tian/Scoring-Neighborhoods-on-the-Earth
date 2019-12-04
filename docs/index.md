@@ -15,7 +15,7 @@ I quantitatively measure the urban perception based on digital surveys to humans
 
 
 ### About me
-[Luxin Tian](https://github.com/luxin-tian) at the University of Chicago
+[Luxin Tian](https://luxin-tian.github.io/profile/) at the University of Chicago
 
 ### Computational Social Science
 Learn more about the impact of [computational social sciences](https://macss.uchicago.edu) in the digital age. 
