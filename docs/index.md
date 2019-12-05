@@ -4,7 +4,7 @@ I quantitatively measure the urban perception based on digital surveys to humans
 
 
 ## Interactive Maps
-There are six dimensions used for measure the perception of a city. Choose one to explore: 
+There are six dimensions used for measuring the perception of a city. Choose one to explore: 
 - [Safety](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/safety)
 - [Lively](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/lively)
 - [Wealthy](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/wealth)
