@@ -5,12 +5,12 @@ I quantitatively measure the urban perception based on digital surveys to humans
 
 ## Interactive Maps
 There are six dimensions used for measure the perception of a city. Choose one to explore: 
-- [Safety](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/docs/safety.md)
-- [Lively](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/docs/lively.md)
-- [Wealthy](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/docs/wealth.md)
-- [Beautiful](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/docs/beautiful.md)
-- [Depressing](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/docs/depressing.md)
-- [Boring](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/docs/boring.md)
+- [Safety](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/docs/safety)
+- [Lively](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/docs/lively)
+- [Wealthy](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/docs/wealth)
+- [Beautiful](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/docs/beautiful)
+- [Depressing](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/docs/depressing)
+- [Boring](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/docs/boring)
 
 ## Algorithm and Methods
 [Elo Rating System](https://en.wikipedia.org/wiki/Elo_rating_system)
