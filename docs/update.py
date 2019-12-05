@@ -57,11 +57,8 @@ citylist = ['Chicago',
 
 catelist = ['safety', 'lively', 'wealthy', 'beautiful', 'depressing', 'boring']
 
-for city in citylist: 
+for city in sorted(citylist): 
     catelinklist = []
-    for cate in catelist: 
-        filename = 'pp2_' + '%20'.join(city.split(' ')) + cate + '.html'
-        catelink = f'[{cate}](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/{cate}/{filename})'
-        catelinklist.append(catelink)
-    citylink =  ' | ' + city + ' | ' + ' | '.join(catelinklist) + ' | '
-    print(citylink)
+    filename = 'pp2_' + '%20'.join(city.split(' ')) + '_boring' + '.html'
+    catelink = f' - [{city}](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/boring/{filename})'
+    print(catelink)
