@@ -57,6 +57,6 @@ Interactive map saved to ./vis/pp2_Zagreb_safety.html'''
 
 text = text.split('\nInteractive map saved to ')
 for i in text: 
-    filename = i.split('/')[-1]
-    cityname = filename.split('.')[0].split('_')[1]
+    filename = '%20'.join(i.split('/')[-1].split(' '))
+    cityname = i.split('/')[-1].split('.')[0].split('_')[1]
     print(f' - [{cityname}](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/safety/{filename})')
