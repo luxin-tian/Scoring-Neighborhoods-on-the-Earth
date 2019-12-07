@@ -52,7 +52,7 @@ As a demonstration of using the :mod:`elorating` module, I calculate the urban p
 
 Interactive maps
 ----------------
-
+`Interactive maps <https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/>`_
 
 Documentation of pp2_app
 ------------------------
