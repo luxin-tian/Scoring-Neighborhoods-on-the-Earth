@@ -1,4 +1,4 @@
-# Scoring Places on the EARTH (Beta)
+# Scoring Neighborhoods on the EARTH
 
 This project measures the urban perception based on digital surveys to humans on the planet! Learn more about the survey at [Place Pulse 2.0](http://pulse.media.mit.edu/vision/). 
 
@@ -16,10 +16,8 @@ There are six dimensions used for measuring the perception of a city. Choose one
 [Elo Rating System](https://en.wikipedia.org/wiki/Elo_rating_system)
 
 
-## Open source software
-```elorating``` package for Python. 
-
-## Reproducible code is coming soon. 
+## Documentation
+[Documentation of Scoring Neighborhoods on the EARTH](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/build/html/index.html)
 
 ## About me
 [Luxin Tian](https://luxin-tian.github.io/profile/) at the University of Chicago
