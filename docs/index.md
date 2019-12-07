@@ -1,6 +1,13 @@
 # Scoring Neighborhoods on the EARTH
 
-This project measures the urban perception based on digital surveys to humans on the planet! Learn more about the survey at [Place Pulse 2.0](http://pulse.media.mit.edu/vision/). 
+This project aims at using the `Elo Rating System <https://en.wikipedia.org/wiki/Elo_rating_system>`_ to quantitatively measure urban perceptions around the world. The measurement is based on digital surveys to humans, in which users are asked to compare two street view images in terms of some dimensions, for example, safety. 
+
+As a by-product of this project, I write a :mod:`elorating` module in Python, which can be generally used for other scoring projects that employ `Elo Rating System <https://en.wikipedia.org/wiki/Elo_rating_system>`_. Particularly, as a computational economist, I note that even though `Elo Rating System <https://en.wikipedia.org/wiki/Elo_rating_system>`_ was originally designed to measure the relative skill levels of chess players based on competition records, it can be used as a `Social Welfare Function <https://en.wikipedia.org/wiki/Social_welfare_function>`_ that reveals collective preferences from individual preferences. 
+
+Currently, I use the survey data from `Place Pulse 2.0 <http://pulse.media.mit.edu/data/>`_, which covers 56 cities from 28 countries across 6 continents and keeps ongoing. I provide the reproducible Python scripts that calculate the Elo Rating scores in the repository of this project as a demonstration of the :mod:elorating module. I also visualize the outcome on `interactive maps <https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/>`_. 
+
+Furthermore, since `Place Pulse 2.0 <http://pulse.media.mit.edu/data/>`_ retrieves street view images from `Google Maps <https://developers.google.com/maps/documentation>`_, it does not cover mainland China (Google ends their consumer services in China since 2010, see more on `Wikipedia <https://en.wikipedia.org/wiki/Google_China>`_). I plan to extend this project to cover mainland China in the future using street view images provided by `Baidu Map <https://lbsyun.baidu.com/>`_. For now, I finished a program in Python that retrieves street view images. I have included this program in the repository. 
+
 
 
 ## Interactive Maps

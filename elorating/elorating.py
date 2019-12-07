@@ -83,30 +83,31 @@ class Elo:
         base_score (int): The default score of a newly added element. 
 
 
-    Example: 
+    Example:: 
 
-    >>> import elorating
-    >>> scoring_universities = elorating.Elo()
-    >>> uchicago = elorating.Element('001774', info='The Uniersity of Chiacgo')
-    >>> northwestern = elorating.Element('001739', info='Northwestern University')
-    >>> scoring_universities.add(uchicago, northwestern)
-    [<elorating.Element object> Element ID: 001774 ; Info: The Uniersity of Chiacgo. , <elorating.Element object> Element ID: 001739 ; Info: Northwestern University. ]
-    >>> scoring_universities.update_rating(uchicago, northwestern, 1)
-    (1005.0, 995.0)
-    >>> scoring_universities.score(uchicago)
-    1005.0
-    >>> scoring_universities.win_prob(uchicago, northwestern)
-    0.5143871841659987
-    >>> print(scoring_universities.stats())
+        >>> import elorating
+        >>> scoring_universities = elorating.Elo()
+        >>> uchicago = elorating.Element('001774', info='The Uniersity of Chiacgo')
+        >>> northwestern = elorating.Element('001739', info='Northwestern University')
+        >>> scoring_universities.add(uchicago, northwestern)
+        [<elorating.Element object> Element ID: 001774 ; Info: The Uniersity of Chiacgo. , <elorating.Element object> Element ID: 001739 ; Info: Northwestern University. ]
+        >>> scoring_universities.update_rating(uchicago, northwestern, 1)
+        (1005.0, 995.0)
+        >>> scoring_universities.score(uchicago)
+        1005.0
+        >>> scoring_universities.win_prob(uchicago, northwestern)
+        0.5143871841659987
+        >>> print(scoring_universities.stats())
 
-    Highest: 1005.0
-    Lowest: 995.0
-    Mean: 1000.0
-    Stdev: 7.0710678118654755
-    >>> scoring_universities.remove(northwestern)
-    [<elorating.Element object> Element ID: 001739 ; Info: Northwestern University. ]
-    >>> scoring_universities.save_data(mute=1)
-    './logfiles/elorating_log_Fri_Dec_6_15:45:54_2019.csv'
+        Highest: 1005.0
+        Lowest: 995.0
+        Mean: 1000.0
+        Stdev: 7.0710678118654755
+        >>> scoring_universities.remove(northwestern)
+        [<elorating.Element object> Element ID: 001739 ; Info: Northwestern University. ]
+        >>> scoring_universities.save_data(mute=1)
+        './logfiles/elorating_log_Fri_Dec_6_15:45:54_2019.csv'
+
     """
 
     def __init__(self, base_score=1000, scale=100): 
