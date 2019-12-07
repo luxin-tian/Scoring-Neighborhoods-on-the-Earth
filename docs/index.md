@@ -1,6 +1,6 @@
 # Scoring Neighborhoods on the EARTH
 
-[用中文阅览](https://translate.google.cn/translate?hl=&sl=en&tl=zh-CN&u=https%3A%2F%2Fluxin-tian.github.io%2FScoring-Neighborhoods-on-the-Earth%2F)
+[用中文阅览](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/Chinese)
 
 This project aims at using the [Elo Rating System](https://en.wikipedia.org/wiki/Elo_rating_system) to quantitatively measure urban perceptions around the world. The measurement is based on digital surveys to humans, in which users are asked to compare two street view images in terms of some dimensions, for example, safety. 
 
