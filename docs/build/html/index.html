@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Documentation of Scoring Neighborhoods on the Earth Project &#8212; Scoring Neighborhoods on the Earth 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="documentation-of-scoring-neighborhoods-on-the-earth-project">
+<h1><a class="toc-backref" href="#id16">Documentation of Scoring Neighborhoods on the Earth Project</a><a class="headerlink" href="#documentation-of-scoring-neighborhoods-on-the-earth-project" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#documentation-of-scoring-neighborhoods-on-the-earth-project" id="id16">Documentation of Scoring Neighborhoods on the Earth Project</a></p>
+<ul>
+<li><p><a class="reference internal" href="#overview-about-this-project" id="id17">Overview about this Project</a></p></li>
+<li><p><a class="reference internal" href="#module-elorating" id="id18">elorating package</a></p>
+<ul>
+<li><p><a class="reference internal" href="#installation" id="id19">Installation</a></p></li>
+<li><p><a class="reference internal" href="#module-elorating.elorating" id="id20">elorating module</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#scoring-neighborhoods-in-56-cities-based-on-place-pulse-2-0" id="id21">Scoring Neighborhoods in 56 Cities (based on Place Pulse 2.0)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#overview" id="id22">Overview</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id23">Interactive maps</a></p></li>
+<li><p><a class="reference internal" href="#module-pp2_app" id="id24">Documentation of pp2_app</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id9" id="id25">Installation</a></p></li>
+<li><p><a class="reference internal" href="#tutorial" id="id26">Tutorial</a></p></li>
+<li><p><a class="reference internal" href="#module-pp2_app.pp2_elorating_app" id="id27">pp2_elorating_app reference</a></p></li>
+<li><p><a class="reference internal" href="#module-pp2_app.pp2_visualization_app" id="id28">pp2_visualization_app reference</a></p></li>
+<li><p><a class="reference internal" href="#module-pp2_app.pp2_generate_all_maps" id="id29">pp2_generate_all_maps reference</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#scoring-neighborhoods-in-mainland-china-in-progress" id="id30">Scoring Neighborhoods in Mainland China (in progress)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#module-baidu_app" id="id31">Documentation of baidu_app</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id14" id="id32">Installation</a></p></li>
+<li><p><a class="reference internal" href="#id15" id="id33">Tutorial</a></p></li>
+<li><p><a class="reference internal" href="#module-baidu_app.retrieve_street_view" id="id34">retrieve_street_view reference</a></p></li>
+<li><p><a class="reference internal" href="#module-baidu_app.baidu_api_request" id="id35">baidu_api_request reference</a></p></li>
+<li><p><a class="reference internal" href="#module-baidu_app.coordinate_generator" id="id36">coordinate_generator reference</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#indices-and-tables" id="id37">Indices and tables</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="overview-about-this-project">
+<h2><a class="toc-backref" href="#id17">Overview about this Project</a><a class="headerlink" href="#overview-about-this-project" title="Permalink to this headline">¶</a></h2>
+<p>This project aims at using the <a class="reference external" href="https://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System</a> to quantitatively measure urban perceptions around the world. The measurement is based on digital surveys to humans, in which users are asked to compare two street view images in terms of some dimensions, for example, safety.</p>
+<p>As a by-product of this project, I write a <a class="reference internal" href="#module-elorating" title="elorating"><code class="xref py py-mod docutils literal notranslate"><span class="pre">elorating</span></code></a> module in Python, which can be generally used for other scoring projects that employ <a class="reference external" href="https://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System</a>. Particularly, as a computational economist, I note that even though <a class="reference external" href="https://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System</a> was originally designed to measure the relative skill levels of chess players based on competition records, it can be used as a <a class="reference external" href="https://en.wikipedia.org/wiki/Social_welfare_function">Social Welfare Function</a> that reveals collective preferences from individual preferences.</p>
+<p>Currently, I use the survey data from <a class="reference external" href="http://pulse.media.mit.edu/data/">Place Pulse 2.0</a>, which covers 56 cities from 28 countries across 6 continents and keeps ongoing. I provide the reproducible Python scripts that calculate the Elo Rating scores in the repository of this project as a demonstration of the :mod:elorating module. I also visualize the outcome on <a class="reference external" href="https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/">interactive maps</a>.</p>
+<p>Furthermore, since <a class="reference external" href="http://pulse.media.mit.edu/data/">Place Pulse 2.0</a> retrieves street view images from <a class="reference external" href="https://developers.google.com/maps/documentation">Google Maps</a>, it does not cover mainland China (Google ends their consumer services in China since 2010, see more on <a class="reference external" href="https://en.wikipedia.org/wiki/Google_China">Wikipedia</a>). I plan to extend this project to cover mainland China in the future using street view images provided by <a class="reference external" href="https://lbsyun.baidu.com/">Baidu Map</a>. For now, I finished a program in Python that retrieves street view images. I have included this program in the repository.</p>
+</div>
+<div class="section" id="module-elorating">
+<span id="elorating-package"></span><h2><a class="toc-backref" href="#id18">elorating package</a><a class="headerlink" href="#module-elorating" title="Permalink to this headline">¶</a></h2>
+<p>This package contains the <a class="reference internal" href="#module-elorating.elorating" title="elorating.elorating"><code class="xref py py-mod docutils literal notranslate"><span class="pre">elorating.elorating</span></code></a> module.</p>
+<div class="section" id="installation">
+<h3><a class="toc-backref" href="#id19">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p>To install the <code class="docutils literal notranslate"><span class="pre">elorating</span></code> package, clone this repository to your workplace, and run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">this</span><span class="o">/</span><span class="n">project</span>
+</pre></div>
+</div>
+<p>To uninstall, run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">uninstall</span> <span class="n">elorating</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Importing this package will automatically import the members in the elorating module.</p>
+</div>
+</div>
+<div class="section" id="module-elorating.elorating">
+<span id="elorating-module"></span><h3><a class="toc-backref" href="#id20">elorating module</a><a class="headerlink" href="#module-elorating.elorating" title="Permalink to this headline">¶</a></h3>
+<p>This module allows users to manage an Elo Rating project and calculate the
+scoring results.</p>
+<p>Users can import data from files or manually operate elements within a project,
+calculate Elo Rating scores, and save data to a file. This class supports
+common operations and statistical methods. <a class="reference external" href="https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/">Scoring Neighborhoods on the Earth</a>  is a
+sample Elo Rating project using voting outcomes to measure urban perceptions.</p>
+<dl class="class">
+<dt id="elorating.elorating.Element">
+<em class="property">class </em><code class="sig-prename descclassname">elorating.elorating.</code><code class="sig-name descname">Element</code><span class="sig-paren">(</span><em class="sig-param">element_id</em>, <em class="sig-param">info=''</em><span class="sig-paren">)</span><a class="headerlink" href="#elorating.elorating.Element" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to represent an element to be added into the Elo Rating
+project.</p>
+<p>An instance of this class is hashable. Instances of this class are the
+objects to work on in an Elo Rating project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element_id</strong> (<em>object</em>) – Any hashable object that can be used to uniquely identify the element.</p></li>
+<li><p><strong>info</strong> (<em>str</em><em>, </em><em>optional</em>) – Can store some information about this element such as name, alias, comments, etc. (default=’’)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="elorating.elorating.Element.element_id">
+<code class="sig-name descname">element_id</code><a class="headerlink" href="#elorating.elorating.Element.element_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>a hashable object that represents an element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>read-only</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="elorating.elorating.Element.info">
+<code class="sig-name descname">info</code><a class="headerlink" href="#elorating.elorating.Element.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>a string that stores descriptive information about an element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">elorating</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">el1</span> <span class="o">=</span> <span class="n">elorating</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;001774&#39;</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="s1">&#39;The Uniersity of Chiacgo&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">el2</span> <span class="o">=</span> <span class="n">elorating</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;001739&#39;</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="s1">&#39;Northwestern University&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">el1</span><span class="o">.</span><span class="n">element_id</span>
+<span class="go">&#39;001774&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">el1</span> <span class="o">==</span> <span class="n">el2</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">hash</span><span class="p">(</span><span class="n">el1</span><span class="p">)</span>
+<span class="go">-7300844225016213262</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">el1</span><span class="p">)</span>
+<span class="go">Element ID: 001774 ; Info: The Uniersity of Chiacgo.</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt>
+<em class="property">property </em><code class="sig-name descname">element_id</code></dt>
+<dd><p>Return the id of this element. The id is read-only and
+cannot be changed over its lifetime.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="elorating.elorating.Elo">
+<em class="property">class </em><code class="sig-prename descclassname">elorating.elorating.</code><code class="sig-name descname">Elo</code><span class="sig-paren">(</span><em class="sig-param">base_score=1000</em>, <em class="sig-param">scale=100</em><span class="sig-paren">)</span><a class="headerlink" href="#elorating.elorating.Elo" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to manage the Elo Rating project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_score</strong> (<em>int</em>) – The default score of a newly added element. (default=1000)</p></li>
+<li><p><strong>scale</strong> (<em>int</em>) – The scoring scale used for normalizing the Elo scores to a user-defined scale.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>InterruptedError</strong> – <code class="docutils literal notranslate"><span class="pre">base_score</span></code> is changed during the project.</p></li>
+<li><p><strong>TypeError</strong> – Some arguments do not satisfy their type requriements.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="elorating.elorating.Elo.base_score">
+<code class="sig-name descname">base_score</code><a class="headerlink" href="#elorating.elorating.Elo.base_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>The default score of a newly added element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">elorating</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scoring_universities</span> <span class="o">=</span> <span class="n">elorating</span><span class="o">.</span><span class="n">Elo</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">uchicago</span> <span class="o">=</span> <span class="n">elorating</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;001774&#39;</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="s1">&#39;The Uniersity of Chiacgo&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">northwestern</span> <span class="o">=</span> <span class="n">elorating</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;001739&#39;</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="s1">&#39;Northwestern University&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scoring_universities</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">uchicago</span><span class="p">,</span> <span class="n">northwestern</span><span class="p">)</span>
+<span class="go">[&lt;elorating.Element object&gt; Element ID: 001774 ; Info: The Uniersity of Chiacgo. , &lt;elorating.Element object&gt; Element ID: 001739 ; Info: Northwestern University. ]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scoring_universities</span><span class="o">.</span><span class="n">update_rating</span><span class="p">(</span><span class="n">uchicago</span><span class="p">,</span> <span class="n">northwestern</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">(1005.0, 995.0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scoring_universities</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">uchicago</span><span class="p">)</span>
+<span class="go">1005.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scoring_universities</span><span class="o">.</span><span class="n">win_prob</span><span class="p">(</span><span class="n">uchicago</span><span class="p">,</span> <span class="n">northwestern</span><span class="p">)</span>
+<span class="go">0.5143871841659987</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">scoring_universities</span><span class="o">.</span><span class="n">stats</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Highest: 1005.0
+Lowest: 995.0
+Mean: 1000.0
+Stdev: 7.0710678118654755
+&gt;&gt;&gt; scoring_universities.remove(northwestern)
+[&lt;elorating.Element object&gt; Element ID: 001739 ; Info: Northwestern University. ]
+&gt;&gt;&gt; scoring_universities.save_data(mute=1)
+‘./logfiles/elorating_log_Fri_Dec_6_15:45:54_2019.csv’</p>
+<dl class="method">
+<dt id="elorating.elorating.Elo.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param">*elements</em><span class="sig-paren">)</span><a class="headerlink" href="#elorating.elorating.Elo.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an Element object to an Elo object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>*elements</strong> (<em>tuple</em><em>(</em><a class="reference internal" href="#elorating.elorating.Element" title="elorating.elorating.Element"><em>Element</em></a><em>)</em>) – one or more than one Element objects that need to be added into the Elo object.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of Element objects that have been added.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>TypeError</strong> – at least one arguments is not Element object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<em class="property">property </em><code class="sig-name descname">base_score</code></dt>
+<dd><p>Return the default rating score of a new element.</p>
+<p>The default initial score cannot be change over the project to
+ensure the fairness of the rating.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="elorating.elorating.Elo.import_data">
+<code class="sig-name descname">import_data</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#elorating.elorating.Elo.import_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import a data file generated by this file to continue the project
+with the saved outcome.</p>
+<p>The imported file must be a csv file that includes the three fields: <code class="docutils literal notranslate"><span class="pre">ID</span></code>, <code class="docutils literal notranslate"><span class="pre">Info</span></code>, <code class="docutils literal notranslate"><span class="pre">RatingScore</span></code>.
+The CSV should be consistent with the format requirements:
+- ID must be strings splitted by ‘,’
+- Info must be a string
+- RatingScore must be a floating number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>InterruptedError</strong> – Try to import data into an non-empty Elo object. Data from files can only be imported into an empty Elo object.</p></li>
+<li><p><strong>TyeError</strong> – The CSV file does not meet the format requirement.</p></li>
+<li><p><strong>KeyError</strong> – The CSV file is not found.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elorating.elorating.Elo.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param">*elements</em><span class="sig-paren">)</span><a class="headerlink" href="#elorating.elorating.Elo.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove an Element object to an Elo object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>*elements</strong> (<em>tuple</em><em>(</em><a class="reference internal" href="#elorating.elorating.Element" title="elorating.elorating.Element"><em>Element</em></a><em>)</em>) – one or more than one Element objects that need to be removed into the Elo object.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of Element objects that have been removed.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>TypeError</strong> – at least one arguments is not Element object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elorating.elorating.Elo.save_data">
+<code class="sig-name descname">save_data</code><span class="sig-paren">(</span><em class="sig-param">mute=0</em><span class="sig-paren">)</span><a class="headerlink" href="#elorating.elorating.Elo.save_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the scoring outcome to a csv file with three fields: <code class="docutils literal notranslate"><span class="pre">ID</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Info</span></code>, <code class="docutils literal notranslate"><span class="pre">RatingScore</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mute</strong> (<em>0</em><em> or </em><em>1</em>) – if mute=1 the file path will not be printed; if mute=0 the file path will be printed when finishing saving data. (default=0)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The path of the saved data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elorating.elorating.Elo.scale">
+<em class="property">property </em><code class="sig-name descname">scale</code><a class="headerlink" href="#elorating.elorating.Elo.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the scoring scale of the project, to which the exported data
+would be normalized to.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="elorating.elorating.Elo.score">
+<code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param">element</em><span class="sig-paren">)</span><a class="headerlink" href="#elorating.elorating.Elo.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the rating score of an element from current rating records.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>element</strong> (<a class="reference internal" href="#elorating.elorating.Element" title="elorating.elorating.Element"><em>Element</em></a>) – one Element object that need to be removed into the Elo object.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The score of this element.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>KeyError</strong> – the element is not found in the current Elo object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elorating.elorating.Elo.stats">
+<code class="sig-name descname">stats</code><span class="sig-paren">(</span><em class="sig-param">option='all'</em><span class="sig-paren">)</span><a class="headerlink" href="#elorating.elorating.Elo.stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the statistics of current scoring outcome.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>option</strong> (<em>'all'</em><em>, </em><em>'max'</em><em>, </em><em>'min</em><em>, or </em><em>'stdev'</em>) – option=’max’: returns the highest score; option=’min’: returns the lowest score. option=’stdev’: returns the standard deviation.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Descriptive statistics (str).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elorating.elorating.Elo.update_rating">
+<code class="sig-name descname">update_rating</code><span class="sig-paren">(</span><em class="sig-param">element1</em>, <em class="sig-param">element2</em>, <em class="sig-param">vote=0</em>, <em class="sig-param">K=10</em><span class="sig-paren">)</span><a class="headerlink" href="#elorating.elorating.Elo.update_rating" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the rating score of [element1] and [element2] based on the
+racing or voting outcome.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element1</strong> (<a class="reference internal" href="#elorating.elorating.Element" title="elorating.elorating.Element"><em>Element</em></a>) – one Element object.</p></li>
+<li><p><strong>element2</strong> (<a class="reference internal" href="#elorating.elorating.Element" title="elorating.elorating.Element"><em>Element</em></a>) – another Element object.</p></li>
+<li><p><strong>vote</strong> (<em>0</em><em>, </em><em>1</em><em>, or </em><em>2</em><em>, </em><em>optional</em>) – vote=0 tie; vote=1 element1 wins; vote=2 element2 wins. (default=0)</p></li>
+<li><p><strong>K</strong> (<em>int</em><em>, </em><em>optional</em>) – the parameter for the Elo Rating System. (default=10)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple of two updated scores for the two elements (tuple(float, float)).</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – the input value of <code class="docutils literal notranslate"><span class="pre">value</span></code> does not satisfy the requirement.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elorating.elorating.Elo.win_prob">
+<code class="sig-name descname">win_prob</code><span class="sig-paren">(</span><em class="sig-param">element</em>, <em class="sig-param">opponent</em><span class="sig-paren">)</span><a class="headerlink" href="#elorating.elorating.Elo.win_prob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the predicted probability of one element beats another
+element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> (<a class="reference internal" href="#elorating.elorating.Element" title="elorating.elorating.Element"><em>Element</em></a>) – one Element object.</p></li>
+<li><p><strong>opponent</strong> (<a class="reference internal" href="#elorating.elorating.Element" title="elorating.elorating.Element"><em>Element</em></a>) – another Element object.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The predicted probability of one element wins another based on current Elo Rating scores.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="scoring-neighborhoods-in-56-cities-based-on-place-pulse-2-0">
+<h2>Scoring Neighborhoods in 56 Cities (based on <a class="reference external" href="http://pulse.media.mit.edu/data/">Place Pulse 2.0</a>)<a class="headerlink" href="#scoring-neighborhoods-in-56-cities-based-on-place-pulse-2-0" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overview">
+<h3><a class="toc-backref" href="#id22">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://pulse.media.mit.edu/data/">Place Pulse</a> is a crowdsourcing data collection project hosted by <a class="reference external" href="mit.edu">MIT</a>. In this project, participants would be represented with two street view images for each time, and they would be asked to indicate their comparison between the two images in terms of one of the following questions (cited from <a class="reference external" href="http://pulse.media.mit.edu/data/">Place Pulse</a>):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Which Place Looks Safer?</p></li>
+<li><p>Which Place Looks Wealthier?</p></li>
+<li><p>Which Place Looks More Beautiful?</p></li>
+<li><p>Which Place Looks More Boring?</p></li>
+<li><p>Which Place Looks Livelier?</p></li>
+<li><p>Which Place Looks More Depressing?</p></li>
+</ul>
+</div></blockquote>
+<p>The second study <a class="reference external" href="http://pulse.media.mit.edu/data/">Place Pulse 2.0</a> “extends the data collection to 56 cities from 28 countries across 6 continents”, making up a dataset containing 1,223,650 inidividual voting records.</p>
+<p>As a demonstration of using the <a class="reference internal" href="#module-elorating" title="elorating"><code class="xref py py-mod docutils literal notranslate"><span class="pre">elorating</span></code></a> module, I calculate the urban perceptions of all the 56 cities covered by the study based on the <a class="reference external" href="http://pulse.media.mit.edu/data/">Place Pulse 2.0</a> data. The reproducible Python scripts are included in the repository of this project.</p>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id23">Interactive maps</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="module-pp2_app">
+<span id="documentation-of-pp2-app"></span><h3><a class="toc-backref" href="#id24">Documentation of pp2_app</a><a class="headerlink" href="#module-pp2_app" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h4><a class="toc-backref" href="#id25">Installation</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<p>Clone the repository of this project to your workplace.</p>
+<p>Install the <a class="reference internal" href="#module-elorating" title="elorating"><code class="xref py py-mod docutils literal notranslate"><span class="pre">elorating</span></code></a> package.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">this</span><span class="o">/</span><span class="n">project</span>
+</pre></div>
+</div>
+<p>Install package dependencies</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">this</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">pp2_app</span><span class="o">/</span><span class="n">package_requirement</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tutorial">
+<h4><a class="toc-backref" href="#id26">Tutorial</a><a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h4>
+<p>To reproduce the map of some specific cities in terms of some dimensions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">this</span><span class="o">/</span><span class="n">project</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">python3</span> <span class="n">pp2_app</span><span class="o">/</span><span class="n">pp2_visualization_app</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>To reproduce all the visualizations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">this</span><span class="o">/</span><span class="n">project</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">python3</span> <span class="n">pp2_app</span><span class="o">/</span><span class="n">pp2_generate_all_maps</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-pp2_app.pp2_elorating_app">
+<span id="pp2-elorating-app-reference"></span><h4><a class="toc-backref" href="#id27">pp2_elorating_app reference</a><a class="headerlink" href="#module-pp2_app.pp2_elorating_app" title="Permalink to this headline">¶</a></h4>
+<p>This program uses <a class="reference external" href="http://pulse.media.mit.edu/data/">http://pulse.media.mit.edu/data/</a> to demostrate an
+application of the elorating module.</p>
+<p>To run from terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">this</span><span class="o">/</span><span class="n">project</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">python3</span> <span class="n">pp2_app</span><span class="o">/</span><span class="n">pp2_elorating_app</span><span class="o">.</span><span class="n">py</span>
+<span class="go">Please input the path of Place Pulse 2.0 data &lt;vote.csv&gt;: .../pp2_20161010/votes.csv</span>
+<span class="go">Please choose a category: safety, lively, wealthy, beautiful, depressing, or boring: safety</span>
+
+<span class="go">This program uses the data from http://pulse.media.mit.edu/data/ to demostrate an application of the elorating module.</span>
+
+<span class="go">Dimension: safety</span>
+
+<span class="go">File length: 1223650</span>
+<span class="go">Reading Files |████████████████████████████████| 1223649/1223650</span>
+
+<span class="go">number of Elements: 111367</span>
+<span class="go">Loading Elements |████████████████████████████████| 111367/111367</span>
+
+<span class="go">number of valid records: 368926</span>
+<span class="go">Calculating Elo Scores |████████████████████████████████| 368926/368926</span>
+
+
+<span class="go">Data saved to ./logfiles/elorating_log_Fri_Dec_6_16:54:57_2019.csv</span>
+
+
+
+<span class="go">Highest: 1134.3642935436123</span>
+<span class="go">Lowest: 873.5102761124806</span>
+<span class="go">Mean: 1000.0</span>
+<span class="go">Stdev: 15.013932094550254</span>
+</pre></div>
+</div>
+<p>To import in Python (in the workplace ‘/path/to/this/project’):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pp2_app.pp2_elorating_app</span>
+</pre></div>
+</div>
+<dl class="function">
+<dt id="pp2_app.pp2_elorating_app.main">
+<code class="sig-prename descclassname">pp2_app.pp2_elorating_app.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">category</em><span class="sig-paren">)</span><a class="headerlink" href="#pp2_app.pp2_elorating_app.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the Elo Rating scores of the locations in terms of certain
+dimension and export the data into a csv file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – <p>the file path of the ‘vote.csv’ file downloaded from <a class="reference external" href="http://pulse.media.mit.edu/data/">Place Pulse 2.0</a>.</p>
+</p></li>
+<li><p><strong>category</strong> (<em>str</em>) – can be one of the six dimensions: ‘safety’, ‘lively’, ‘wealthy’, ‘beautiful’, ‘depressing’, or ‘boring’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The path of the exported data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pp2_app.pp2_visualization_app">
+<span id="pp2-visualization-app-reference"></span><h4><a class="toc-backref" href="#id28">pp2_visualization_app reference</a><a class="headerlink" href="#module-pp2_app.pp2_visualization_app" title="Permalink to this headline">¶</a></h4>
+<p>This program calls the <a class="reference internal" href="#module-pp2_app.pp2_elorating_app" title="pp2_app.pp2_elorating_app"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pp2_app.pp2_elorating_app</span></code></a> module to calculate
+the Elo Rating scores of places in some cities in terms of some dimensions and
+export interactive maps to .html files.</p>
+<p>To run from terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">this</span><span class="o">/</span><span class="n">project</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">python3</span> <span class="n">pp2_app</span><span class="o">/</span><span class="n">pp2_visualization_app</span><span class="o">.</span><span class="n">py</span>
+<span class="go">Please input the path of Place Pulse 2.0 data &lt;vote.csv&gt;: /Users/tianluxin/Desktop/mpcs-python/project/autumn-2019-project-luxin-tian/data_and_files/pp2_20161010/votes.csv</span>
+<span class="go">cities: Chicago,Los Angeles</span>
+<span class="go">categories: safety,lively</span>
+
+<span class="go">This program uses the data from http://pulse.media.mit.edu/data/ to demostrate an application of the elorating module.</span>
+
+<span class="go">Dimension: safety</span>
+<span class="go">File length: 1223650</span>
+<span class="go">Reading Files |████████████████████████████████| 1223649/1223650</span>
+
+<span class="go">number of Elements: 111367</span>
+<span class="go">Loading Elements |████████████████████████████████| 111367/111367</span>
+
+<span class="go">number of valid records: 368926</span>
+<span class="go">Calculating Elo Scores |████████████████████████████████| 368926/368926</span>
+
+
+<span class="go">Data saved to ./logfiles/elorating_log_Fri_Dec_6_17:51:27_2019.csv</span>
+
+
+<span class="go">Highest: 1134.3642935436123</span>
+<span class="go">Lowest: 873.5102761124806</span>
+<span class="go">Mean: 1000.0</span>
+<span class="go">Stdev: 15.013932094550254</span>
+<span class="go">Interactive map saved to ./vis/pp2_Chicago_safety.html</span>
+<span class="go">Interactive map saved to ./vis/pp2_Los Angeles_safety.html</span>
+
+<span class="go">This program uses the data from http://pulse.media.mit.edu/data/ to demostrate an application of the elorating module.</span>
+
+<span class="go">Dimension: lively</span>
+<span class="go">File length: 1223650</span>
+<span class="go">Reading Files |████████████████████████████████| 1223649/1223650</span>
+
+<span class="go">number of Elements: 110890</span>
+<span class="go">Loading Elements |████████████████████████████████| 110890/110890</span>
+
+<span class="go">number of valid records: 267292</span>
+<span class="go">Calculating Elo Scores |████████████████████████████████| 267292/267292</span>
+
+
+<span class="go">Data saved to ./logfiles/elorating_log_Fri_Dec_6_17:52:25_2019.csv</span>
+
+
+<span class="go">Highest: 1129.7027310192975</span>
+<span class="go">Lowest: 880.1816699253212</span>
+<span class="go">Mean: 1000.0</span>
+<span class="go">Stdev: 12.060674162814488</span>
+<span class="go">Interactive map saved to ./vis/pp2_Chicago_lively.html</span>
+<span class="go">Interactive map saved to ./vis/pp2_Los Angeles_lively.html</span>
+</pre></div>
+</div>
+<p>To import in Python(in the workplace ‘/path/to/this/project’):</p>
+<blockquote>
+<div><p>import pp2_app.pp2_elorating_app</p>
+</div></blockquote>
+<dl class="function">
+<dt id="pp2_app.pp2_visualization_app.to_map">
+<code class="sig-prename descclassname">pp2_app.pp2_visualization_app.</code><code class="sig-name descname">to_map</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">cityname_list</em>, <em class="sig-param">category_list</em><span class="sig-paren">)</span><a class="headerlink" href="#pp2_app.pp2_visualization_app.to_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call the <a class="reference internal" href="#module-pp2_app.pp2_elorating_app" title="pp2_app.pp2_elorating_app"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pp2_app.pp2_elorating_app</span></code></a> to calculate the Elo Rating
+score of palces in some cities in terms of some dimensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – <p>the file path of the ‘vote.csv’ file downloaded from <a class="reference external" href="http://pulse.media.mit.edu/data/">Place Pulse 2.0</a>.</p>
+</p></li>
+<li><p><strong>cityname_list</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – a list of city names, of which the Elo Rating scores will be calculated.</p></li>
+<li><p><strong>category_list</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – a list of measurement dimensions in ‘safety’, ‘lively’, ‘wealthy’, ‘beautiful’, ‘depressing’, or ‘boring’.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Export:</dt><dd><p>Interactive maps will be exported to ‘./vis/’ in .html files.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pp2_app.pp2_generate_all_maps">
+<span id="pp2-generate-all-maps-reference"></span><h4><a class="toc-backref" href="#id29">pp2_generate_all_maps reference</a><a class="headerlink" href="#module-pp2_app.pp2_generate_all_maps" title="Permalink to this headline">¶</a></h4>
+<p>Running this program will calculate the Elo Rating socres of the places in
+all the cities covered by Place Pulse 2.0 &lt;<a class="reference external" href="http://pulse.media.mit.edu/data/">http://pulse.media.mit.edu/data/</a>&gt; in
+terms of all the dimensions and export all the interactive maps.</p>
+<p>To run from terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">this</span><span class="o">/</span><span class="n">project</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">python3</span> <span class="n">pp2_app</span><span class="o">/</span><span class="n">pp2_generate_all_maps</span><span class="o">.</span><span class="n">py</span>
+<span class="go">(... the outputs are omitted)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="scoring-neighborhoods-in-mainland-china-in-progress">
+<h2><a class="toc-backref" href="#id30">Scoring Neighborhoods in Mainland China (in progress)</a><a class="headerlink" href="#scoring-neighborhoods-in-mainland-china-in-progress" title="Permalink to this headline">¶</a></h2>
+<p><strong>This part is still in progress.</strong>
+I plan to extend this project to cover mainland China in the future using street view images provided by <a class="reference external" href="https://lbsyun.baidu.com/">Baidu Map</a>. For now, I finished a program in Python that retrieves street view images from <a class="reference external" href="https://lbsyun.baidu.com/">Baidu Map</a> within the geographical areas that the user specifies. I have include this program in the repository and provide the documentation for it.</p>
+<div class="section" id="module-baidu_app">
+<span id="documentation-of-baidu-app"></span><h3><a class="toc-backref" href="#id31">Documentation of baidu_app</a><a class="headerlink" href="#module-baidu_app" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h4><a class="toc-backref" href="#id32">Installation</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<p>Clone the repository of this project to your workplace.</p>
+<p>Install the <a class="reference internal" href="#module-elorating" title="elorating"><code class="xref py py-mod docutils literal notranslate"><span class="pre">elorating</span></code></a> package.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">this</span><span class="o">/</span><span class="n">project</span>
+</pre></div>
+</div>
+<p>Install package dependencies</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">this</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">baidu_app</span><span class="o">/</span><span class="n">package_requirement</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h4><a class="toc-backref" href="#id33">Tutorial</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<p>To retrive the static panorama street views within a specific area in mainland China, run from terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">this</span><span class="o">/</span><span class="n">project</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">python3</span> <span class="n">baidu_app</span><span class="o">/</span><span class="n">retrieve_street_view</span><span class="o">.</span><span class="n">py</span>
+<span class="go">lower bound of latitude: 39.9465</span>
+<span class="go">upper bound of latitude: 39.9720</span>
+<span class="go">lower bound of longitude: 116.3281</span>
+<span class="go">upper bound of longitude: 116.3614</span>
+<span class="go">lat_resolution: 5</span>
+<span class="go">lon_resolution: 5</span>
+<span class="go">ak: ************************</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ls</span> <span class="n">street_image</span>
+<span class="go">116.3281,39.9465.jpg            116.336425,39.9465.jpg          116.34475,39.9465.jpg           116.353075,39.9465.jpg          116.3614,39.9465.jpg</span>
+<span class="go">116.3281,39.952875.jpg          116.336425,39.952875.jpg        116.34475,39.952875.jpg         116.353075,39.952875.jpg        116.3614,39.952875.jpg</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-baidu_app.retrieve_street_view">
+<span id="retrieve-street-view-reference"></span><h4><a class="toc-backref" href="#id34">retrieve_street_view reference</a><a class="headerlink" href="#module-baidu_app.retrieve_street_view" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt id="baidu_app.retrieve_street_view.main">
+<code class="sig-prename descclassname">baidu_app.retrieve_street_view.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param">a</em>, <em class="sig-param">b</em>, <em class="sig-param">c</em>, <em class="sig-param">d</em>, <em class="sig-param">lat_resolution</em>, <em class="sig-param">lon_resolution</em>, <em class="sig-param">ak</em>, <em class="sig-param">width=1024</em>, <em class="sig-param">height=512</em>, <em class="sig-param">fov=360</em><span class="sig-paren">)</span><a class="headerlink" href="#baidu_app.retrieve_street_view.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrive the street view images within a specific area from Baiud Map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>str</em><em>, </em><em>float</em>) – lower bound of latitude</p></li>
+<li><p><strong>b</strong> (<em>str</em><em>, </em><em>float</em>) – upper bound of latitude</p></li>
+<li><p><strong>c</strong> (<em>str</em><em>, </em><em>float</em>) – lower bound of longitude</p></li>
+<li><p><strong>d</strong> (<em>str</em><em>, </em><em>float</em>) – upper bound of longitude</p></li>
+<li><p><strong>lat_resolution</strong> (<em>int</em>) – the difference between the latitudes of two coordinates.</p></li>
+<li><p><strong>lon_resolution</strong> (<em>int</em>) – the difference between the longitudes of two coordinates.</p></li>
+<li><p><strong>ak</strong> (<em>str</em>) – Baidu developer API ak token.</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – the width of the street view image. (default=1024)</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – the height of the street view image. (default=512)</p></li>
+<li><p><strong>fov</strong> (<em>int</em>) – the horizontol view range of the street view image. Can be integars in [10, 360]. (default=360)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Exports:</dt><dd><p>Image files will be saved to ./street_image/</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-baidu_app.baidu_api_request">
+<span id="baidu-api-request-reference"></span><h4><a class="toc-backref" href="#id35">baidu_api_request reference</a><a class="headerlink" href="#module-baidu_app.baidu_api_request" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt id="baidu_app.baidu_api_request.get_street_view">
+<code class="sig-prename descclassname">baidu_app.baidu_api_request.</code><code class="sig-name descname">get_street_view</code><span class="sig-paren">(</span><em class="sig-param">ak</em>, <em class="sig-param">location</em>, <em class="sig-param">width=1024</em>, <em class="sig-param">height=512</em>, <em class="sig-param">fov=360</em><span class="sig-paren">)</span><a class="headerlink" href="#baidu_app.baidu_api_request.get_street_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a static panorama street image from Baidu Map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ak</strong> (<em>str</em>) – Baidu developer API ak token.</p></li>
+<li><p><strong>location</strong> (<em>str</em>) – a string contains the geographical coordinates of a location ‘&lt;longitude&gt;,&lt;latitude&gt;’.</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – the width of the street view image. (default=1024)</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – the height of the street view image. (default=512)</p></li>
+<li><p><strong>fov</strong> (<em>int</em>) – the horizontol view range of the street view image. Can be integars in [10, 360]. (default=360)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Exports:</dt><dd><p>Image file will be saved to ./street_image/{location}.jpg</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-baidu_app.coordinate_generator">
+<span id="coordinate-generator-reference"></span><h4><a class="toc-backref" href="#id36">coordinate_generator reference</a><a class="headerlink" href="#module-baidu_app.coordinate_generator" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt id="baidu_app.coordinate_generator.coordinate_generator">
+<code class="sig-prename descclassname">baidu_app.coordinate_generator.</code><code class="sig-name descname">coordinate_generator</code><span class="sig-paren">(</span><em class="sig-param">a</em>, <em class="sig-param">b</em>, <em class="sig-param">c</em>, <em class="sig-param">d</em>, <em class="sig-param">lat_resolution</em>, <em class="sig-param">lon_resolution</em><span class="sig-paren">)</span><a class="headerlink" href="#baidu_app.coordinate_generator.coordinate_generator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yields the evenly distributed geographical coordinates within a square
+area.</p>
+<p>For example, if lat_resolution=100 and long_resolution=150, this will
+generate 100*150 geographical coordinates. This generator yields discrete
+geographical coordinates within a square area.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>str</em><em>, </em><em>float</em>) – lower bound of latitude</p></li>
+<li><p><strong>b</strong> (<em>str</em><em>, </em><em>float</em>) – upper bound of latitude</p></li>
+<li><p><strong>c</strong> (<em>str</em><em>, </em><em>float</em>) – lower bound of longitude</p></li>
+<li><p><strong>d</strong> (<em>str</em><em>, </em><em>float</em>) – upper bound of longitude</p></li>
+<li><p><strong>lat_resolution</strong> (<em>int</em>) – the difference between the latitudes of two coordinates.</p></li>
+<li><p><strong>lon_resolution</strong> (<em>int</em>) – the difference between the longitudes of two coordinates.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>‘&lt;longitude&gt;, &lt;latitude&gt;’.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A geographical coordinates (str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h2><a class="toc-backref" href="#id37">Indices and tables</a><a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Scoring Neighborhoods on the Earth</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Luxin Tian.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
