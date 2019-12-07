@@ -1,5 +1,7 @@
 # Scoring Neighborhoods on the EARTH
 
+[用中文阅览](https://translate.google.cn/translate?hl=&sl=en&tl=zh-CN&u=https%3A%2F%2Fluxin-tian.github.io%2FScoring-Neighborhoods-on-the-Earth%2F)
+
 This project aims at using the [Elo Rating System](https://en.wikipedia.org/wiki/Elo_rating_system) to quantitatively measure urban perceptions around the world. The measurement is based on digital surveys to humans, in which users are asked to compare two street view images in terms of some dimensions, for example, safety. 
 
 Currently, I use the survey data from [Place Pulse 2.0](http://pulse.media.mit.edu/data/), which covers 56 cities from 28 countries across 6 continents and keeps ongoing. I provide the reproducible Python scripts that calculate the Elo Rating scores in the repository of this project as a demonstration of the ``elorating`` module. I also visualize the outcome on [interactive maps](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/). 
