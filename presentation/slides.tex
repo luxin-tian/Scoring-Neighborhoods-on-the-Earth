@@ -1,0 +1,178 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+
+\usepackage{minted}
+\usepackage{media9}
+\usepackage{hyperref}
+\usepackage{listings}
+
+
+\title{Scoring Neighborhoods on the Earth}
+\subtitle{A computational social science project \\based on crowd-sourcing surveys and Elo Rating System.}
+\author{Luxin Tian}
+\institute{The University of Chicago}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{frame}
+\frametitle{Overview of the structure}
+
+\begin{columns}
+    \column{0.5\textwidth}
+        \begin{itemize}
+        \item \mintinline{python}{elorating} package
+            \begin{itemize}
+                \item Implement the Elo Rating algorithm and manage a scoring project. 
+            \end{itemize}
+        \item \mintinline{python}{pp2_app} module
+            \begin{itemize}
+                \item Use \mintinline{python}{elorating} package to measure the urban perception of 56 cities around the world. 
+            \end{itemize}
+        \item \mintinline{python}{baidu_app} module 
+            \begin{itemize}
+                \item Extend the project to cover mainland China. 
+            \end{itemize}
+        \end{itemize}
+
+    \column{0.5\textwidth}
+        \begin{figure}
+            \includegraphics[scale=0.4]{QR.png}
+            \centering
+        \end{figure}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Elo Rating System}
+\begin{itemize}
+    \item An algorithm for calculating the relative skill levels of players in zero-sum games such as chess.
+    \item I think it can be used to reveal collective preferences from individual pairwise voting. (See \textit{Social Welfare Functional} in microeconomics)
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{ c|c|c }
+Left & Right & VotingOutcome\\
+\hline
+ Hyde Park & Kenwood & Left \\ 
+ University Park & Pilsen & Right \\
+ ... & ... & ...
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+    \item Scoring neighborhoods across countries based on individual pairwise voting  on \textbf{street view images}. 
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{\mintinline{python}{elorating} Package for Python}
+    \begin{itemize}
+        \item Create, add, remove, and query an element. 
+        \item Update rating scores based on pairwise competition.
+        \item Query the rating score of an element.
+        \item Predict winning probability.
+        \item Import/export data from/to CSV files. 
+        \item Generate descriptive statistics.
+        \item Normalize the rating scores to some user-defined scales.
+    \end{itemize}
+
+\begin{example}[Install \mintinline{python}{elorating}]
+    \mint{shell-session} |>>> pip install /path/to/this/project|
+\end{example}
+
+
+\end{frame}
+
+
+\begin{frame}{Scoring Neighborhoods in 56 Cities}
+    \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+        \item Place Pulse 2.0 data 
+        \begin{itemize}
+            \item A digital survey to humans
+            \item Covers 56 cities from 28 countries across 6 continents
+        \end{itemize}
+        \item Dimensions: 
+        \begin{itemize}
+            \item Safety
+            \item Lively
+            \item Wealthy
+            \item Beautiful
+            \item Depressing
+            \item Boring
+        \end{itemize}
+    \end{itemize}
+    
+    \column{0.5\textwidth}
+    \begin{center}
+            \begin{figure}
+            \includegraphics[scale=0.4]{QR.png}
+            \centering
+        \end{figure}
+    \end{center}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{\mintinline{python}{pp2_app}: Calculating Perception Scores}
+    \begin{center}
+   \includemedia[
+  activate=pageopen,
+  width=300pt,height=150pt,
+]{}{pp2_demo.swf} 
+\end{center}
+\end{frame}
+
+\begin{frame}{Interactive Maps}
+\href{https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/}{Scoring Neighborhoods on the Earth}
+    \begin{center}
+       \includemedia[
+      activate=pageopen,
+      width=300pt,height=150pt,
+    ]{}{map_demo.swf} 
+    \end{center}
+\end{frame}
+
+\begin{frame}{Extend this project to mainland China}
+
+\begin{itemize}
+    \item Retrieve street view images within a user-specified geographical area from \href{http://lbsyun.baidu.com/}{Baidu Maps}. 
+    \item \mintinline{python}{baidu_app}
+    
+        \begin{center}
+            \begin{figure}
+            \includegraphics[scale=0.2]{sample_street_image.jpg}
+            \centering
+        \end{figure}
+    \end{center}
+    
+    \item In progress... (but all the work in Python has been finished. )
+    
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Reflections}
+\begin{itemize}
+    \item Challenges
+    \begin{itemize}
+        \item Structuring the project, organizing multiple modules
+        \item Documentation (\mintinline{python}{sphinx})
+        \item User Interface
+    \end{itemize}
+    \item Gains
+    \begin{itemize}
+        \item Organizing a full Python project
+        \item Data processing
+        \item Data visualization
+        \item Calling APIs
+        \item Coding style and documentation (necessary for open-sourcing or collaboration)
+    \end{itemize}
+    
+\end{itemize}
+    
+\end{frame}
+
+\end{document}
