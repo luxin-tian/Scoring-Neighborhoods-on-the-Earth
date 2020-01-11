@@ -29,7 +29,7 @@ As a by-product of this project, I write a ``elorating`` module in Python, which
 [Documentation of Scoring Neighborhoods on the Earth](https://luxin-tian.github.io/Scoring-Neighborhoods-on-the-Earth/build/html/index.html)
 
 ## About me
-[Luxin Tian](https://luxin-tian.github.io/profile/) at the University of Chicago
+[Luxin Tian](http://luxintian.com) at the University of Chicago
 
 Master student in Computational Economics 
 
